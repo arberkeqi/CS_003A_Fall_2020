@@ -1,0 +1,28 @@
+class Solution {
+public:
+    vector<string> fizzBuzz(int nmax) {
+    vector<string> strings;
+    for (int n=1; n<=nmax; n++)
+    {
+        // number divisible by 15, print
+        // 'FizzBuzz' in place of the number
+        if (n%15 == 0)
+            strings.push_back("FizzBuzz");
+        // number divisible by 3? print 'Fizz'
+        // in place of the number
+        else if ((n%3) == 0)
+            strings.push_back("Fizz");
+        // number divisible by 5, print 'Buzz'
+        // in place of the number
+        else if ((n%5) == 0)
+            strings.push_back("Buzz");
+        else // print the number
+        {
+            ostringstream nstring;
+            nstring << n;
+            strings.push_back(nstring.str());
+        }
+    }
+    return strings;
+    }
+};
