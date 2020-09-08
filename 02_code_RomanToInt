@@ -1,0 +1,35 @@
+class Solution {
+public:
+    int romanToInt(string roman){
+	map<char,int> map1;
+	map1['I'] =    1;
+	map1['V'] =    5;
+	map1['X'] =   10;
+	map1['L'] =   50;
+	map1['C'] =  100;
+	map1['D'] =  500;
+	map1['M'] = 1000;
+	int number = 0,i = 0;
+
+	// If input is only one character
+	if(roman.length() <= 1){
+		return map1[roman.at(0)];// .at(0) used to extract characters by characters from a given string. 
+                                 // Index 0 for the first character
+	}
+    // If we have more than one character
+	else{
+		while(i < roman.size()){
+			if(map1[roman[i]] < map1[roman[i + 1]]){
+				number += map1[roman[i + 1]] - map1[roman[i]];// the second int number - the first int number
+				i += 2;
+			}
+			else{
+				number += map1[roman[i]];// if we put the same roman number calculate to int
+				i++;
+			}
+		}
+		return number;
+	}
+}
+
+};
